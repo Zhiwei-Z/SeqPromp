@@ -3,6 +3,8 @@ from meta_policy_search.envs.base import MetaEnv
 import numpy as np
 from gym.spaces import Box
 
+ITERATION_BOUND_1 = 50
+ITERATION_BOUND_2 = 50
 
 class MetaPointEnvCorner(MetaEnv):
     """
@@ -18,6 +20,7 @@ class MetaPointEnvCorner(MetaEnv):
         self.corners = [np.array([-2,-2]), np.array([2,-2]), np.array([-2,2]), np.array([2, 2])]
         self.observation_space = Box(low=-np.inf, high=np.inf, shape=(2,))
         self.action_space = Box(low=-0.2, high=0.2, shape=(2,))
+        self.counter = 0
 
     def step(self, action):
         """
@@ -84,7 +87,16 @@ class MetaPointEnvCorner(MetaEnv):
         pass
 
     def sample_tasks(self, n_tasks):
-        return [self.corners[idx] for idx in np.random.choice(range(len(self.corners)), size=n_tasks)]
+        self.counter += 1
+        if self.counter <= ITERATION_BOUND_1:
+            temp = self.corners[:2]
+            return [temp[idx] for idx in np.random.choice(range(len(temp)), size=n_tasks)]
+        elif self.counter <= ITERATION_BOUND_2:
+            temp = self.corners[:3]
+            return [temp[idx] for idx in np.random.choice(range(len(temp)), size=n_tasks)]
+        else:
+            temp = self.corners
+            return [temp[idx] for idx in np.random.choice(range(len(temp)), size=n_tasks)]
 
     def set_task(self, task):
         self.goal = task
