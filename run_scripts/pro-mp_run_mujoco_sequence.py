@@ -1,6 +1,6 @@
 from comet_ml import Experiment
 experiment = Experiment(api_key="cpFSd8xDOCuqURKozmTVzbqwS",
-                            project_name="general", workspace="zhiwei-z")
+                            project_name="bair-ml4l3", workspace="zhiwei-z")
 
 experiment.set_name("sequential half cheetah")
 from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
