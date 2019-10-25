@@ -6,7 +6,7 @@ from gym.spaces import Box
 ITERATION_BOUND_1 = 50
 ITERATION_BOUND_2 = 50
 
-class MetaPointEnvCorner(MetaEnv):
+class MetaPointEnvCornerSeq(MetaEnv):
     """
     Simple 2D point meta environment. Each meta-task corresponds to a different goal / corner
     (one of the 4 points (-2,-2), (-2, 2), (2, -2), (2,2)) which are sampled with equal probability

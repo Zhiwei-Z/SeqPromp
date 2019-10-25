@@ -107,7 +107,7 @@ if __name__=="__main__":
 
             'baseline': 'LinearFeatureBaseline',
 
-            'env': 'MetaPointEnvCorner',
+            'env': 'MetaPointEnvCornerSeq',
 
             # sampler config
             'rollouts_per_meta_task': 20,
