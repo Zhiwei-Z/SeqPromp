@@ -3,6 +3,8 @@ experiment = Experiment(api_key="cpFSd8xDOCuqURKozmTVzbqwS",
                             project_name="bair-ml4l3", workspace="zhiwei-z")
 
 experiment.set_name("regular half cheetah")
+import sys
+sys.path.append("./")
 from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
 from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_direc import HalfCheetahRandDirecEnv
 from meta_policy_search.envs.normalized_env import normalize
