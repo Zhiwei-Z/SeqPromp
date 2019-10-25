@@ -4,7 +4,7 @@ experiment = Experiment(api_key="cpFSd8xDOCuqURKozmTVzbqwS",
 
 experiment.set_name("regular point mass")
 import sys
-sys.append.path("./")
+sys.path.append("./")
 from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
 from meta_policy_search.envs.point_envs.point_env_2d_corner import MetaPointEnvCorner
 from meta_policy_search.envs.normalized_env import normalize
