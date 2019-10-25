@@ -3,8 +3,8 @@ from meta_policy_search.envs.base import MetaEnv
 import numpy as np
 from gym.spaces import Box
 
-ITERATION_BOUND_1 = 100
-ITERATION_BOUND_2 = 200
+ITERATION_BOUND_1 = 50
+ITERATION_BOUND_2 = 50
 
 class MetaPointEnvCorner(MetaEnv):
     """
@@ -89,11 +89,14 @@ class MetaPointEnvCorner(MetaEnv):
     def sample_tasks(self, n_tasks):
         self.counter += 1
         if self.counter <= ITERATION_BOUND_1:
-            return [self.corners[0], self.corners[1]]
+            temp = self.corners[:2]
+            return [temp[idx] for idx in np.random.choice(range(len(temp)), size=n_tasks)]
         elif self.counter <= ITERATION_BOUND_2:
-            return [self.corners[0], self.corners[1], self.corners[2]]
+            temp = self.corners[:3]
+            return [temp[idx] for idx in np.random.choice(range(len(temp)), size=n_tasks)]
         else:
-            return self.corners[3]
+            temp = self.corners
+            return [temp[idx] for idx in np.random.choice(range(len(temp)), size=n_tasks)]
 
     def set_task(self, task):
         self.goal = task

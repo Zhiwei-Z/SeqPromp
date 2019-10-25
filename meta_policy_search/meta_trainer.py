@@ -80,6 +80,7 @@ class Trainer(object):
             for itr in range(self.start_itr, self.n_itr):
                 itr_start_time = time.time()
                 logger.log("\n ---------------- Iteration %d ----------------" % itr)
+                self.experiment.log_metric("iteration", itr)
                 logger.log("Sampling set of tasks/goals for this meta-batch...")
                 self.sampler.update_tasks()
                 self.policy.switch_to_pre_update()  # Switch to pre-update policy
