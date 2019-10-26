@@ -3,8 +3,8 @@ from meta_policy_search.envs.base import MetaEnv
 import numpy as np
 from gym.spaces import Box
 
-ITERATION_BOUND_1 = 50
-ITERATION_BOUND_2 = 50
+ITERATION_BOUND_1 = 100
+ITERATION_BOUND_2 = 200
 
 class MetaPointEnvCorner(MetaEnv):
     """

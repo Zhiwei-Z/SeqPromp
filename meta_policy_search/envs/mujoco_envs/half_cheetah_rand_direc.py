@@ -4,9 +4,8 @@ from meta_policy_search.utils import logger
 import gym
 from gym.envs.mujoco.mujoco_env import MujocoEnv
 
-IterationBound1 = 80
-IterationBound2 = 160
-IterationBound3 = 240
+IterationBound1 = 100
+IterationBound2 = 200
 
 class HalfCheetahRandDirecEnv(MetaEnv, MujocoEnv, gym.utils.EzPickle):
     def __init__(self, goal_direction=None):
@@ -21,10 +20,8 @@ class HalfCheetahRandDirecEnv(MetaEnv, MujocoEnv, gym.utils.EzPickle):
         if self.counter < IterationBound1:
             return np.random.choice((-1.0, -0.5), (n_tasks, ))
         if self.counter < IterationBound2:
-            return np.random.choice((-1.0, 0.0), (n_tasks, ))
-        if self.counter < IterationBound3:
-            return np.random.choice((-1.0, 0.5), (n_tasks, ))
-        return np.random.choice((-1.0, 1.0), (n_tasks, ))
+            return np.random.choice((-1.0, -0.5, 0.5), (n_tasks, ))
+        return np.random.choice((-1.0, -0.5, 0.5, 1.0), (n_tasks, ))
 
     def set_task(self, task):
         """
