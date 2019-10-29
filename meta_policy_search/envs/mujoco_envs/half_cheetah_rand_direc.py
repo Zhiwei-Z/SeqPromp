@@ -4,8 +4,8 @@ from meta_policy_search.utils import logger
 import gym
 from gym.envs.mujoco.mujoco_env import MujocoEnv
 
-IterationBound1 = 100
-IterationBound2 = 200
+IterationBound1 = 200
+IterationBound2 = 600
 
 class HalfCheetahRandDirecEnv(MetaEnv, MujocoEnv, gym.utils.EzPickle):
     def __init__(self, goal_direction=None):
